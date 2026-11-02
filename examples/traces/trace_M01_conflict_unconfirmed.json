@@ -1,0 +1,63 @@
+{
+  "material_id": "M01",
+  "review_status": "pending_confirmation",
+  "risk_reasons": [],
+  "suggested_slot": "19:00",
+  "pending_confirmations": [
+    "请求时段 18:00 已占用，建议替代时段 19:00，待用户确认"
+  ],
+  "draft_saved": false,
+  "duplicated_submission": false,
+  "published": false,
+  "steps_used": 5,
+  "llm_name": "MockLLM",
+  "termination_reason": "替代时段属于对用户发布安排的变更，未经用户确认不得擅自修改硬性发布要求，先请求人工确认",
+  "trace": [
+    {
+      "step": 1,
+      "action": "read_material",
+      "tool_arguments": {
+        "material_id": "M01",
+        "recheck": false
+      },
+      "observation_summary": "material_reader 返回：{'incomplete': False, 'missing_fields': []}",
+      "decision_rationale": "没有任何素材信息，第一步需要读取素材"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "tool_arguments": {
+        "material_id": "M01"
+      },
+      "observation_summary": "rule_checker 返回：{'passed': True, 'violations': []}",
+      "decision_rationale": "素材信息完整，下一步执行审核规则检查"
+    },
+    {
+      "step": 3,
+      "action": "query_slot",
+      "tool_arguments": {
+        "slot": "18:00"
+      },
+      "observation_summary": "slot_query 返回：{'occupied': True, 'next_available_slot': '19:00', 'slot': '18:00'}",
+      "decision_rationale": "规则通过，查询用户请求的发布时段是否可用"
+    },
+    {
+      "step": 4,
+      "action": "query_alternative",
+      "tool_arguments": {
+        "slot": "19:00"
+      },
+      "observation_summary": "slot_query 返回：{'occupied': False, 'next_available_slot': '19:00', 'slot': '19:00'}",
+      "decision_rationale": "请求时段 18:00 已被占用，需要查询下一个可用时段作为替代建议"
+    },
+    {
+      "step": 5,
+      "action": "request_confirmation",
+      "tool_arguments": {
+        "slot": "19:00"
+      },
+      "observation_summary": "终结动作：替代时段属于对用户发布安排的变更，未经用户确认不得擅自修改硬性发布要求，先请求人工确认",
+      "decision_rationale": "替代时段属于对用户发布安排的变更，未经用户确认不得擅自修改硬性发布要求，先请求人工确认"
+    }
+  ]
+}

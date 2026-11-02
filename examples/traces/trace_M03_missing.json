@@ -1,0 +1,44 @@
+{
+  "material_id": "M03",
+  "review_status": "blocked",
+  "risk_reasons": [],
+  "suggested_slot": null,
+  "pending_confirmations": [],
+  "draft_saved": false,
+  "duplicated_submission": false,
+  "published": false,
+  "steps_used": 3,
+  "llm_name": "MockLLM",
+  "termination_reason": "补查后字段 ['title'] 仍缺失，信息不足无法排期",
+  "trace": [
+    {
+      "step": 1,
+      "action": "read_material",
+      "tool_arguments": {
+        "material_id": "M03",
+        "recheck": false
+      },
+      "observation_summary": "material_reader 返回：{'incomplete': True, 'missing_fields': ['title']}",
+      "decision_rationale": "没有任何素材信息，第一步需要读取素材"
+    },
+    {
+      "step": 2,
+      "action": "recheck_material",
+      "tool_arguments": {
+        "material_id": "M03",
+        "recheck": true
+      },
+      "observation_summary": "material_reader 返回：{'incomplete': True, 'missing_fields': ['title'], 'recheck_resolved': False}",
+      "decision_rationale": "素材缺失字段 ['title']，先补查数据源确认能否补全，而不是直接排期"
+    },
+    {
+      "step": 3,
+      "action": "block",
+      "tool_arguments": {
+        "reason": "补查后字段 ['title'] 仍缺失，信息不足无法排期"
+      },
+      "observation_summary": "终结动作：补查未能补全必填信息，依据完整性要求阻断",
+      "decision_rationale": "补查未能补全必填信息，依据完整性要求阻断"
+    }
+  ]
+}

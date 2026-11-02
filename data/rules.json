@@ -1,0 +1,21 @@
+{
+  "rules": [
+    {
+      "rule_id": "R01",
+      "name": "标题必填",
+      "description": "素材元数据必须包含非空标题"
+    },
+    {
+      "rule_id": "R02",
+      "name": "类型白名单",
+      "description": "素材类型必须属于允许发布的类型",
+      "allowed_types": ["video", "image", "article"]
+    },
+    {
+      "rule_id": "R03",
+      "name": "时长上限",
+      "description": "视频类素材时长不得超过300秒",
+      "max_duration_sec": 300
+    }
+  ]
+}

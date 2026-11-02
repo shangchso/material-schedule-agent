@@ -1,0 +1,64 @@
+{
+  "materials": [
+    {
+      "material_id": "M01",
+      "metadata": {
+        "title": "秋季新品发布会短片",
+        "type": "video",
+        "duration_sec": 150
+      },
+      "requested_time": "18:00",
+      "hard_requirement": true
+    },
+    {
+      "material_id": "M02",
+      "metadata": {
+        "title": "校园招聘宣传图",
+        "type": "image",
+        "duration_sec": 0
+      },
+      "requested_time": "19:00",
+      "hard_requirement": false
+    },
+    {
+      "material_id": "M03",
+      "metadata": {
+        "title": null,
+        "type": "video",
+        "duration_sec": 90
+      },
+      "requested_time": "20:00",
+      "hard_requirement": false
+    },
+    {
+      "material_id": "M04",
+      "metadata": {
+        "title": "超长纪录片素材",
+        "type": "video",
+        "duration_sec": 480
+      },
+      "requested_time": "21:00",
+      "hard_requirement": false
+    },
+    {
+      "material_id": "M05",
+      "metadata": {
+        "title": "重复提交测试素材",
+        "type": "article",
+        "duration_sec": 0
+      },
+      "requested_time": "20:00",
+      "hard_requirement": false
+    },
+    {
+      "material_id": "M06",
+      "metadata": {
+        "title": "未知类型素材",
+        "type": "live_stream",
+        "duration_sec": 60
+      },
+      "requested_time": "21:00",
+      "hard_requirement": false
+    }
+  ]
+}

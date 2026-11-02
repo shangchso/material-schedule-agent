@@ -1,0 +1,60 @@
+{
+  "material_id": "M02",
+  "review_status": "approved",
+  "risk_reasons": [],
+  "suggested_slot": "19:00",
+  "pending_confirmations": [],
+  "draft_saved": true,
+  "duplicated_submission": false,
+  "published": false,
+  "steps_used": 5,
+  "llm_name": "MockLLM",
+  "termination_reason": "草稿已保存，任务完成（仅草稿，未真实发布）",
+  "trace": [
+    {
+      "step": 1,
+      "action": "read_material",
+      "tool_arguments": {
+        "material_id": "M02",
+        "recheck": false
+      },
+      "observation_summary": "material_reader 返回：{'incomplete': False, 'missing_fields': []}",
+      "decision_rationale": "没有任何素材信息，第一步需要读取素材"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "tool_arguments": {
+        "material_id": "M02"
+      },
+      "observation_summary": "rule_checker 返回：{'passed': True, 'violations': []}",
+      "decision_rationale": "素材信息完整，下一步执行审核规则检查"
+    },
+    {
+      "step": 3,
+      "action": "query_slot",
+      "tool_arguments": {
+        "slot": "19:00"
+      },
+      "observation_summary": "slot_query 返回：{'occupied': False, 'next_available_slot': '19:00', 'slot': '19:00'}",
+      "decision_rationale": "规则通过，查询用户请求的发布时段是否可用"
+    },
+    {
+      "step": 4,
+      "action": "save_draft",
+      "tool_arguments": {
+        "material_id": "M02",
+        "scheduled_slot": "19:00"
+      },
+      "observation_summary": "draft_saver 返回：{'duplicated': False, 'message': '草稿保存成功（仅草稿，未真实发布）'}",
+      "decision_rationale": "请求时段空闲且审核通过，保存排期草稿"
+    },
+    {
+      "step": 5,
+      "action": "finish",
+      "tool_arguments": {},
+      "observation_summary": "终结动作：草稿已保存，任务完成（仅草稿，未真实发布）",
+      "decision_rationale": "草稿已保存，任务完成（仅草稿，未真实发布）"
+    }
+  ]
+}

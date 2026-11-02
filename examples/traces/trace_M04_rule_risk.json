@@ -1,0 +1,51 @@
+{
+  "material_id": "M04",
+  "review_status": "blocked",
+  "risk_reasons": [
+    "视频时长 480 秒超过上限 300 秒"
+  ],
+  "suggested_slot": null,
+  "pending_confirmations": [],
+  "draft_saved": false,
+  "duplicated_submission": false,
+  "published": false,
+  "steps_used": 3,
+  "llm_name": "MockLLM",
+  "termination_reason": "存在审核规则违规",
+  "trace": [
+    {
+      "step": 1,
+      "action": "read_material",
+      "tool_arguments": {
+        "material_id": "M04",
+        "recheck": false
+      },
+      "observation_summary": "material_reader 返回：{'incomplete': False, 'missing_fields': []}",
+      "decision_rationale": "没有任何素材信息，第一步需要读取素材"
+    },
+    {
+      "step": 2,
+      "action": "check_rules",
+      "tool_arguments": {
+        "material_id": "M04"
+      },
+      "observation_summary": "rule_checker 返回：{'passed': False, 'violations': [{'rule_id': 'R03', 'reason': '视频时长 480 秒超过上限 300 秒'}]}",
+      "decision_rationale": "素材信息完整，下一步执行审核规则检查"
+    },
+    {
+      "step": 3,
+      "action": "block",
+      "tool_arguments": {
+        "reason": "存在审核规则违规",
+        "violations": [
+          {
+            "rule_id": "R03",
+            "reason": "视频时长 480 秒超过上限 300 秒"
+          }
+        ]
+      },
+      "observation_summary": "终结动作：规则检查未通过，禁止进入排期环节",
+      "decision_rationale": "规则检查未通过，禁止进入排期环节"
+    }
+  ]
+}
